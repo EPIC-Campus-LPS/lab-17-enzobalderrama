@@ -7,23 +7,29 @@ public class Leaderboard {
 	private ArrayList<Score> scoreboard;
 	public Leaderboard(int capacit) {
 		capacity = capacit;
-		ArrayList<Score> scoreboard = new ArrayList<>(capacity);
+		scoreboard = new ArrayList<>(capacity);
 	}
 	public void addScore(String name, int score) {
-		if (scoreboard.size()+1 > capacity) {
-			return;
-		}
 		Score s = new Score(name, score);
-		for (int i = 0; i < scoreboard.size(); i++) {
-			if (score > scoreboard.get(i).getScore()){
-				scoreboard.add(i, s);
-			}
+		scoreboard.add(s);
+		if (scoreboard.size()+1 >= capacity) {
+			scoreboard.remove(scoreboard.size()-1);
 		}
+		for (int i = 0; i < scoreboard.size()-1; i++) {
+            for (int j = 0; j < scoreboard.size() - 1 - i; j++) {
+                if (scoreboard.get(j).getScore() > scoreboard.get(j + 1).getScore()) {
+                    int tempvar = j;
+                    Score tempscore = scoreboard.get(tempvar);
+                    scoreboard.set(j, scoreboard.get(j + 1));
+                    scoreboard.set(j + 1, tempscore);
+                }
+            }
+        }
 	}
 	public int getHighScore() {
 		int highest = scoreboard.get(0).getScore();
 		for (int i = 1; i < scoreboard.size(); i++) {
-			if (highest < scoreboard.get(i).getScore()) {
+			if (highest <= scoreboard.get(i).getScore()) {
 				highest = scoreboard.get(i).getScore();
 			}
 		}
@@ -49,7 +55,7 @@ public class Leaderboard {
 	public void printLeaderboard() {
 		System.out.println("Leaderboard: ");
 		for (int i = 0; i < scoreboard.size(); i++) {
-			System.out.println(scoreboard.get(i).getName() + ": " + scoreboard.get(i).getScore());
+			System.out.println(scoreboard.toString());
 		}
 	}
 }

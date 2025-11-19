@@ -4,11 +4,11 @@ public class Main {
 	public static void main(String[] args) {  
 	    Leaderboard board = new Leaderboard(5);  
 	  
-	    board.addScore("ABC", 100);  
-	    board.addScore("DEF", 200);  
-	    board.addScore("GHI", 250);  
-	    board.addScore("JKL", 300);  
-	    board.addScore("MNO", 205);  
+	    board.addScore("ABC", 10);  
+	    board.addScore("DEF", 20);  
+	    board.addScore("JKL", 20);  
+	    board.addScore("GHI", 10);  
+	    board.addScore("MNO", 15);  
 	  
 	    System.out.println("High Score: " + board.getHighScore());  
 	    System.out.println("Average Score: " + board.getAverageScore());  
