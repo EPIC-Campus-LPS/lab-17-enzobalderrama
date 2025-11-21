@@ -12,10 +12,10 @@ public class Leaderboard {
 	public void addScore(String name, int score) {
 		Score s = new Score(name, score);
 		scoreboard.add(s);
-		if (scoreboard.size()+1 >= capacity) {
-			scoreboard.remove(scoreboard.size()-1);
+		if (scoreboard.size()+1 > capacity) {
+			scoreboard.remove(s);
 		}
-		for (int i = 0; i < scoreboard.size()-1; i++) {
+		for (int i = 0; i < scoreboard.size(); i++) {
             for (int j = 0; j < scoreboard.size() - 1 - i; j++) {
                 if (scoreboard.get(j).getScore() > scoreboard.get(j + 1).getScore()) {
                     int tempvar = j;
@@ -53,9 +53,6 @@ public class Leaderboard {
 		return false;
 	}
 	public void printLeaderboard() {
-		System.out.println("Leaderboard: ");
-		for (int i = 0; i < scoreboard.size(); i++) {
-			System.out.println(scoreboard.toString());
-		}
+		System.out.println(scoreboard.toString());
 	}
 }

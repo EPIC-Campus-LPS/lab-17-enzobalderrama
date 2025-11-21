@@ -4,10 +4,10 @@ public class Main {
 	public static void main(String[] args) {  
 	    Leaderboard board = new Leaderboard(5);  
 	  
-	    board.addScore("ABC", 10);  
+	    board.addScore("ABC", 4);  
 	    board.addScore("DEF", 20);  
 	    board.addScore("JKL", 20);  
-	    board.addScore("GHI", 10);  
+	    board.addScore("GHI", 100000);  
 	    board.addScore("MNO", 15);  
 	  
 	    System.out.println("High Score: " + board.getHighScore());  
